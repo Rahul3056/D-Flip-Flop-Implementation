@@ -1,0 +1,49 @@
+#### **Example Verilog Code (D Flip-Flop)**  
+```verilog
+module d_flip_flop (
+    input wire D, CLK,
+    output reg Q
+);
+    always @(posedge CLK) begin
+        Q <= D; // On rising edge, store D into Q
+    end
+endmodule
+```
+
+#### **Testbench Code**  
+```verilog
+module testbench;
+    reg D, CLK;
+    wire Q;
+
+    d_flip_flop uut (.D(D), .CLK(CLK), .Q(Q));
+
+    initial begin
+        CLK = 0;
+        forever #5 CLK = ~CLK; // Generate clock with 10-time unit period
+    end
+
+    initial begin
+        $monitor("Time=%0t | CLK=%b | D=%b | Q=%b", $time, CLK, D, Q);
+        
+        D = 0; #10;
+        D = 1; #10;
+        D = 0; #10;
+        D = 1; #10;
+
+        $finish;
+    end
+endmodule
+```
+
+#### **Simulation Output (Console Log Example)**  
+```
+Time=0 | CLK=0 | D=0 | Q=0  
+Time=5 | CLK=1 | D=0 | Q=0  
+Time=10 | CLK=0 | D=1 | Q=0  
+Time=15 | CLK=1 | D=1 | Q=1  
+Time=20 | CLK=0 | D=0 | Q=1  
+Time=25 | CLK=1 | D=0 | Q=0  
+Time=30 | CLK=0 | D=1 | Q=0  
+Time=35 | CLK=1 | D=1 | Q=1  
+```  
