@@ -1,4 +1,4 @@
-### ** D Flip-Flop Implementation**  
+###  D Flip-Flop Implementation 
 
 #### **Concept Overview**  
 A **D Flip-Flop (Data or Delay Flip-Flop)** is a sequential circuit that stores one bit of data. It is a clocked device that transfers the input (**D**) to the output (**Q**) on the triggering edge of the clock signal (**CLK**). The D Flip-Flop is widely used in **registers, shift registers, and synchronous circuits**.  
